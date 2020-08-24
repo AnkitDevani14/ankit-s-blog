@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: header"></head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul th:replace="layout/layout :: sidebar">
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+		
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            
+
+            
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li th:replace="layout/layout :: data">
+              
+              
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container"><a th:href="@{/own}"><button type="button" class="btn btn-info" style="float: right;">Back</button></a>
+			    <div class="row">
+
+			      <!-- Post Content Column -->
+			      <div class="col-lg-8">
+			
+			        <!-- Title -->
+			        <h1 class="mt-4" th:text="${imagePost.ititle}"></h1>
+					
+			        <!-- Author -->
+			        <p class="lead">
+			         
+			          <b><div class="float-right" th:text=${imagePost.icategory}></div></b>
+			           by
+			          <a href="#" th:text=${imagePost.username}></a>
+			          
+			        </p>
+			        
+					
+			        <hr>
+			
+			        
+				
+
+			        <!-- Preview Image -->
+			        <img class="rounded float-right" th:src="${imagePost.ipath}" width="200" height="300" alt="">
+					
+			        <!-- Preview Image -->
+			
+			
+			        <!-- Post Content -->
+			        
+			
+			      
+			        <p th:text=${imagePost.icontent} style="text-align: justify;"></p>
+			        <hr>
+			
+			        <!-- Comments Form -->
+			        <div class="card my-4">
+			          <h5 class="card-header">Leave a Comment:</h5>
+			          <div class="card-body">
+			            <form>
+			              <div class="form-group">
+			                <textarea class="form-control" rows="3"></textarea>
+			              </div>
+			              <button type="submit" class="btn btn-primary">Submit</button>
+			            </form>
+			          </div>
+			        </div>
+			
+			        
+			        
+			      
+			        
+			
+			      </div>
+			
+			    </div>
+			    <!-- /.row -->
+			
+			  </div>
+			        
+            
+            
+
+        
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+    	<footer th:replace="layout/layout :: footer">
+       
+      </footer>
+    </div>
+    <!-- End of Content Wrapper -->
+	
+  </div>
+  <!-- End of Page Wrapper -->
+
+
+
+  
+
+  
+</body>

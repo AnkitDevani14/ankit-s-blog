@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/UserLayout :: header"></head>
+
+<body >
+
+  <div class="container-fluid">
+	
+	
+	
+
+    <!--nav -->
+   
+    <nav th:replace="layout/UserLayout :: navbar1">
+
+    </nav>
+   
+    <!-- End of navbar -->
+	<div class="container">
+		<br>
+		<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+	        <div class="col-md-10 px-0" th:each="daily,state: ${daily}">
+	        <div th:if="${state.count} == 1">
+	          <h1 class="display-4 font-italic" th:text="${daily.title}"></h1>
+	          <p class="lead my-3" th:text="${#strings.abbreviate(daily.content,200)}"></p>
+	          <p class="lead mb-0"><a th:href="@{'/HomeAdmin'+${daily.did}}" class="text-white font-weight-bold">Continue reading...</a></p>
+	        </div>
+	        </div>
+	      </div>
+	
+	
+    
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start" th:each="post,state:${post}">
+            	<div th:if="${state.count} == '1'">
+            	
+		              <strong class="d-inline-block mb-2 text-primary" th:text="${post.category}"></strong>
+		              <h3 class="mb-0">
+		                <a class="text-dark" th:text="${post.title}"></a>
+		              </h3>
+		              <div class="mb-1 text-muted" th:text="${post.Time}"></div>
+		              <p class="card-text mb-auto" th:text="${#strings.abbreviate(post.content,80)}"></p>
+		              <a th:href="@{'/Tech'+${post.pid}}">Continue reading</a>
+            		</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+           <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start" th:each="post,state:${post1}">
+            	<div th:if="${state.count} == '1'">
+            	
+		              <strong class="d-inline-block mb-2 text-success" th:text="${post.category}"></strong>
+		              <h3 class="mb-0">
+		                <a class="text-dark" th:text="${post.title}"></a>
+		              </h3>
+		              <div class="mb-1 text-muted" th:text="${post.Time}"></div>
+		              <p class="card-text mb-auto" th:text="${#strings.abbreviate(post.content,80)}"></p>
+		              <a th:href="@{'/Edu'+${post.pid}}">Continue reading</a>
+            		</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+     <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8 blog-main">
+          <h3 class="pb-3 mb-4 font-italic border-bottom">
+            From the Firehose
+          </h3>
+
+          <div class="blog-post" th:each="admin,state:${admin}">
+          	<div th:if="${state.count} == '1' ">
+        	    <strong class="d-inline-block mb-2 text-success" th:text="${admin.category}"></strong>
+        	    <h2 class="blog-post-title" th:text="${admin.title}"></h2>
+        	     
+	            <p class="blog-post-meta" th:text="${admin.Time} + ' by Admin'">  <a href="#"></a></p>
+	
+	            
+	            <p align="justify" th:text="${admin.content}"></p>
+	            <hr>
+	        </div>
+	        <div th:if="${state.count} == '2' ">
+	         <strong class="d-inline-block mb-2 text-primary" th:text="${admin.category}"></strong>
+        	    <h2 class="blog-post-title" th:text="${admin.title}"></h2>
+        	    
+	            <p class="blog-post-meta" th:text="${admin.Time} + ' by Admin'">  <a href="#"></a></p>
+	
+	            
+	            <p align="justify" th:text="${admin.content}"></p>
+	            <hr>
+	        </div>
+	        <div th:if="${state.count} == '3' ">
+	        	<strong class="d-inline-block mb-2 text-danger" th:text="${admin.category}"></strong>
+        	    <h2 class="blog-post-title" th:text="${admin.title}"></h2>
+        	     
+	            <p class="blog-post-meta" th:text="${admin.Time} + ' by Admin'">  <a href="#"></a></p>
+	
+	            
+	            <p align="justify" th:text="${admin.content}"></p>
+	            <hr>
+	        </div>
+          </div><!-- /.blog-post -->
+
+          
+
+          <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" href="#">Older</a>
+            <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+          </nav>
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">About</h4>
+            <p class="mb-0" align="justify">A "blog (a truncation of "weblog")" is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, "multi-author blogs" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other "microblogging" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.</p>
+          </div>
+			
+           <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6" th:each="category, state : ${category}">
+                <ul class="list-unstyled mb-0" >
+                  <li >
+                    <a th:href="@{'/Category'+${category.category}}" th:text="${category.category}"></a>
+                  </li>
+                 
+                </ul>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+
+         
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </main><!-- /.container --> 
+	</div>
+	<br>
+    <footer th:replace="layout/UserLayout :: footer">
+       
+      </footer>
+   
+	</div>
+  
+
+
+
+  
+
+  
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="header">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Home</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/blog-home.css" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  
+  
+   <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+   <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+ 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar1">
+  <a class="navbar-brand" th:href="@{/}">Ankit's Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor03">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item" sec:authorize="hasRole('ROLE_USER')">
+	        <a class="nav-link" href="/UserAddPost">Add Post</a>
+	      </li>
+	      <li class="nav-item" sec:authorize="hasAnyRole('ROLE_USER')">
+	        <a class="nav-link" href="/UserViewPost">View Post</a>
+	      </li>
+	     
+	      
+	      
+    </ul>
+    
+    
+	   
+	    	 <div class="nav-item dropdown no-arrow"  sec:authorize="hasAnyRole('ROLE_USER')">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <b style="text-transform: uppercase;"> User <Strong class="mr-2 d-none d-lg-inline text-gray-600 small" ></Strong></b>
+                
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                
+               	<a class="dropdown-item" th:href="@{/UserChangePass}">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Change Password
+                </a>
+                <div class="dropdown-divider"></div>
+                 <form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/logout}">
+                <button class="dropdown-item"data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </button>
+                </form>
+              </div>
+            </div>
+	    
+	    <div class="text-right"> 
+	    	  <a class="btn btn-outline-primary"  sec:authorize="isAnonymous()"  th:href="@{/register}">Sign Up</a>
+      	<a class="btn btn-outline-success"  sec:authorize="isAnonymous()"  th:href="@{/login}">Sign In</a>
+
+        
+        </div>
+ 	   
+  </div>
+</nav>
+
+  <!-- Page Content -->
+  
+  <!-- Footer -->
+  <footer class="py-5 bg-dark" th:fragment="footer">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

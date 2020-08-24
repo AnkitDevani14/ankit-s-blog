@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/UserLayout :: header"></head>
+
+<body >
+
+  <div class="container-fluid">
+	
+	
+	
+
+    <!--nav -->
+   
+    <nav th:replace="layout/UserLayout :: navbar1">
+
+    </nav>
+    <!-- End of navbar -->
+	 <!-- Page Content -->
+	 
+  <div class="container">
+		<br>
+    	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Change Password</h1>
+          </div>
+			<div class="alert alert-success alert-dismissible" th:if="${success} == 'Password changed!!!'">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong th:text="${success}"></strong> 
+				</div>
+			
+          <div class="row">
+			 
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-12">
+              <div class="card shadow mb-6">
+                
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Change Password</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div >
+                    	<div class="container-fluid">
+						<form th:action="@{/UserChangePass}" method="post">
+						 
+						  <div class="form-group">
+						    <label for="exampleFormControlInput1">New Password</label>
+						    <input type="text" class="form-control" id="password" name="password" placeholder="Enter New Password">
+						  </div>
+						 
+						  
+						
+						  
+						   <button type="submit" class="btn btn-primary">Change Password</button>
+						  
+						  
+						</form>
+					</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+			
+            
+                 
+            
+            
+          </div>
+    
+
+  </div>
+	<br>
+    <footer th:replace="layout/UserLayout :: footer">
+       
+      </footer>
+   
+	</div>
+  
+
+
+
+  
+
+  
+</body>
+
+</html>

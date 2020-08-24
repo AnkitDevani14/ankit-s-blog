@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/UserLayout :: header"></head>
+
+<body >
+
+  <div class="container-fluid">
+	
+	
+	
+
+    <!--nav -->
+   
+    <nav th:replace="layout/UserLayout :: navbar1">
+
+    </nav>
+    <!-- End of navbar -->
+	 <!-- Page Content -->
+	 
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+	
+	<br>
+       
+        <h1 class="mt-4" th:text="${textPost.title}"></h1>
+		<a th:href="@{'/Category'+${textPost.category}}"><button type="button" class="btn btn-info" style="float: right;">Back</button></a>
+        <!-- Author -->
+        <div>
+        	<p class="lead">
+	          by
+	          <a th:text="Admin"></a>
+	        </p>
+	        <p ></p>
+        </div>
+        
+        <hr>
+
+        <!-- Date/Time -->
+        <p th:text="'Posted on ' + ${textPost.Time}"> </p>
+
+        <hr>
+
+       
+
+
+        <!-- Post Content -->
+        <p class="lead" th:text="${textPost.content}"></p>
+
+        <hr>
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+        
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+     
+
+          <aside class="col-md-4 blog-sidebar">
+          <br>
+          
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">About</h4>
+            <p class="mb-0" align="justify">A "blog (a truncation of "weblog")" is a discussion or informational website published on the World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are typically displayed in reverse chronological order, so that the most recent post appears first, at the top of the web page. Until 2009, blogs were usually the work of a single individual,[citation needed] occasionally of a small group, and often covered a single subject or topic. In the 2010s, "multi-author blogs" (MABs) emerged, featuring the writing of multiple authors and sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks, advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise of Twitter and other "microblogging" systems helps integrate MABs and single-author blogs into the news media. Blog can also be used as a verb, meaning to maintain or add content to a blog.</p>
+          </div>
+			
+           <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6" th:each="category, state : ${category}">
+                <ul class="list-unstyled mb-0" >
+                  <li >
+                    <a th:href="@{'/Category'+${category.category}}" th:text="${category.category}"></a>
+                  </li>
+                 
+                </ul>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+
+         
+        </aside><!-- /.blog-sidebar -->
+
+   
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+	<br>
+    <footer th:replace="layout/UserLayout :: footer">
+       
+      </footer>
+   
+	</div>
+  
+
+
+
+  
+
+  
+</body>
+
+</html>

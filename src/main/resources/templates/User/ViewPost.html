@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/UserLayout :: header"></head>
+
+<body >
+
+  <div class="container-fluid">
+	
+	
+	
+
+    <!--nav -->
+   
+    <nav th:replace="layout/UserLayout :: navbar1">
+
+    </nav>
+    <!-- End of navbar -->
+	 <!-- Page Content -->
+	 
+  <div class="container">
+		<br>
+    	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">View Post</h1>
+          </div>
+			<div class="alert alert-danger alert-dismissible" th:if="${errorDelte} == 'Post Deleted Successfully!!'">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong th:text="${errorDelte}"></strong> 
+				</div>
+				<div class="alert alert-primary alert-primary" th:if="${success} == 'Post Edited successfully!!!'">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong th:text="${success}"></strong> 
+				</div>
+				<div class="alert alert-danger alert-danger" th:if="${ErrorPost} == 'Error in updating Post!!!'">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong th:text="${ErrorPost}"></strong> 
+				</div>
+			
+          
+            <h4>Text Post
+          	
+          	</h4>
+          	<hr>
+         	<div class="row mb-2">
+		        <div class="col-md-6" th:each="post, state:${textPost}">
+		          <div class="card flex-md-row mb-4 box-shadow h-md-200" th:if="${state.count} <= '4'">
+		            <div class="card-body d-flex flex-column align-items-start" >
+		            		
+			              <strong class="d-inline-block mb-2 text-danger" th:text="${post.category}" ></strong>
+			              <div class="float-center">
+			              		<a th:href="@{'/UserTextEdit'+${post.pid}}"><i class="fas fa-edit"></i></a>
+			              		<a th:href="@{'/UserTextDelete'+${post.pid}}"><i class="fas fa-trash"></i></a>
+		            			
+		            		</div>
+			              <h3 class="mb-0" >
+			                <a class="text-dark"  th:text="${post.title}"></a>
+			              </h3>
+			             	<div>
+			             		Posted On : <div class="mb-1 text-muted" th:text="${post.Time}"> </div>
+			             	</div>
+			              
+			              <p class="card-text mb-auto" th:text="${#strings.abbreviate(post.content,100)}">.</p>
+			              <a th:href="@{'/newText'+${post.pid}}">Continue reading</a>
+			             
+			              		
+			            	
+			            
+		            	
+		           </div>
+		         	
+		          </div>
+		            
+		        </div>
+		        
+		       
+		      </div>
+		      <div class="float-right"><a th:href="@{/UsertextPosts}">More Posts   >> </a></div><br>
+		      <h4>Image Post</h4>
+          	<hr>
+		    <div class="row mb-2">
+		        <div class="col-md-6" th:each="post, state:${imagePost}">
+		          <div class="card flex-md-row mb-4 box-shadow h-md-250" th:if="${state.count} <= '4'">
+		            <div class="card-body d-flex flex-column align-items-start">
+		              <strong class="d-inline-block mb-2 text-success" th:text="${post.icategory}"></strong>
+		               <div class="float-center">
+			              		<a th:href="@{'/UserimageEdit'+${post.pimageid}}"><i class="fas fa-edit"></i></a>
+			              		<a th:href="@{'/UserimageDelete'+${post.pimageid}}"><i class="fas fa-trash"></i></a>
+		            			
+		            		</div>
+		              <h3 class="mb-0">
+		                <a class="text-dark"  th:text="${post.ititle}"></a>
+		              </h3>
+		              <div class="mb-1 text-muted" th:text="${post.itime}"></div>
+		              <p class="card-text mb-auto" th:text="${#strings.abbreviate(post.icontent,100)}"></p>
+		              <a th:href="@{'/newImage'+${post.pimageid}}">Continue reading</a>
+		            </div>
+		            <img  th:src="${post.ipath}" width="180" height="250" align="middle" alt="Card image cap">
+		          </div>
+		        </div>
+		      
+		   
+        
+             
+		</div>
+		<div class="float-right"><a th:href="@{/UserImagePosts}">More Posts   >> </a></div><br>
+        </div>
+        
+         <br>
+                 
+            
+            
+          </div>
+    
+
+  </div>
+	<br>
+    <footer th:replace="layout/UserLayout :: footer">
+       
+      </footer>
+   
+	</div>
+  
+
+
+
+  
+
+  
+</body>
+
+</html>
